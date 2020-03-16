@@ -136,6 +136,7 @@ class Student
 		];
 		$stm=$this->db->prepare($sql);
 		$stm->execute($data);
+		return "put fatto";
 		}
 		catch(Exception $e)
 		{
@@ -147,30 +148,30 @@ class Student
     // patch TODO
 	public function patch() 
 	{
-		$ControlloVirgola=0;
+		$ControlloVirgola=0; //controllo per inserire la virgola per la query
 		try
 		{
 			$sql="UPDATE student SET ";
-			if($this->_name!='null')
+			if($this->_name!=null)
 			{
-			$sql.="name=$this->_name";
+			$sql.="name='$this->_name'";
 			$ControlloVirgola=1;
 			}
-			if($this->_surname!='null')
+			if($this->_surname!=null)
 			{
 			if($ControlloVirgola==1){$sql.=","; $ControlloVirgola=0;}
 			$sql.="surname='$this->_surname'";
 			$ControlloVirgola++;
 			}
 			
-			if($this->_sidiCode!='null')
+			if($this->_sidiCode!=null)
 			{
 			if($ControlloVirgola==1){$sql.=","; $ControlloVirgola=0;}
 			$sql.="sidi_code='$this->_sidiCode'";
 			$ControlloVirgola++;
 			}
 			
-			if($this->_taxCode!='null')
+			if($this->_taxCode!=null)
 			{
 			if($ControlloVirgola==1){$sql.=","; $ControlloVirgola=0;}
 			$sql.="tax_code='$this->_taxCode'";

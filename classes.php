@@ -124,7 +124,7 @@ class classes
 		];
 		$stm=$this->db->prepare($sql);
         $stm->execute($data);
-        return "ok";
+        return "PUT fatta";
 		}
 		catch(Exception $e)
 		{
@@ -140,12 +140,12 @@ class classes
 		try
 		{
 			$sql="UPDATE class SET ";
-			if($this->_year!='null')
+			if($this->_year!=null)
 			{
 			$sql.="year='$this->_year'";
 			$ControlloVirgola=1;
 			}
-			if($this->_section!='null')
+			if($this->_section!=null)
 			{
 			if($ControlloVirgola==1){$sql.=","; $ControlloVirgola=0;}
 			$sql.="section='$this->_section'";
@@ -156,6 +156,7 @@ class classes
 		$data=[
 			'id'=>$this->_id
 		];
+		//echo $sql;
 		$stmp=$this->db->prepare($sql);
 		$stmp->execute($data);
 		return "Patch fatta";
